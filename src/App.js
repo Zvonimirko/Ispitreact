@@ -49,7 +49,6 @@ class App extends React.Component {
 
   render() {
     const { userData } = this.state
-    console.log(this.state.userDetails)
 
     const listItems = this.state.userDetails.map(item => <li key={item.id}>{item.name}</li>)
     const ime = userData.login ? 'Ime: ' : ''
@@ -63,7 +62,7 @@ class App extends React.Component {
           <input name='user' type='text' value={this.state.user} onChange={this.handleInput}/>
           <Button />
           <hr></hr>
-          {userData.avatar_url ? <div>Slika:<img src={userData.avatar_url} alt='Slika profila'/></div> : ''}
+          {userData.avatar_url ? <img src={userData.avatar_url} alt='Slika profila'/> : ''}
           <h1>{ime} {userData.login}</h1>
           <p>{id} {userData.id}</p>
           {loc}
