@@ -12,10 +12,6 @@ class App extends React.Component {
       userDetails: []
     }
   }
-  
-  
-    
-  
 
   handleInput = (event) => {
     const { name, value } = event.target
@@ -41,6 +37,14 @@ class App extends React.Component {
     )
   }
 
+  handleReset = () => {
+    this.setState({
+      user: '',
+      userData: {},
+      userDetails: []
+    })
+  }
+
 
   render() {
     const { userData } = this.state
@@ -49,7 +53,6 @@ class App extends React.Component {
     const listItems = this.state.userDetails.map(item => <li key={item.id}>{item.name}</li>)
 
     
-
     return(
       <div className='App'>
         <form onSubmit={this.handleSubmit}>
@@ -57,14 +60,15 @@ class App extends React.Component {
           <Button />
           <hr></hr>
           <img src={userData.avatar_url} alt='Slika profila'/>
-          <h1>{userData.login}</h1>
-          <p>{userData.id}</p>
-          <p>{userData.location}</p>
-          <p>{userData.bio}</p>
-          <ul>
+          <h1>Ime: {userData.login}</h1>
+          <p>ID: {userData.id}</p>
+          <p>Lokacija: {userData.location}</p>
+          <p>Bio: {userData.bio}</p>
+          <ol>
             {listItems}
-          </ul>
+          </ol>
         </form>
+        <button onClick={this.handleReset}>Reset</button>
       </div>
     )
   }
