@@ -37,7 +37,8 @@ class App extends React.Component {
     )
   }
 
-  handleReset = () => {
+  handleReset = (event) => {
+    event.preventDefault()
     this.setState({
       user: '',
       userData: {},
@@ -51,7 +52,10 @@ class App extends React.Component {
     console.log(this.state.userDetails)
 
     const listItems = this.state.userDetails.map(item => <li key={item.id}>{item.name}</li>)
-
+    const ime = userData.login ? 'Ime: ' : ''
+    const id = userData.id ? 'ID: ' : ''
+    const loc = userData.location ? <p>Lokacija: {userData.location}</p> : ''
+    const bio = userData.bio ? <p>Bio: {userData.bio}</p> : ''
     
     return(
       <div className='App'>
@@ -59,11 +63,11 @@ class App extends React.Component {
           <input name='user' type='text' value={this.state.user} onChange={this.handleInput}/>
           <Button />
           <hr></hr>
-          <img src={userData.avatar_url} alt='Slika profila'/>
-          <h1>Ime: {userData.login}</h1>
-          <p>ID: {userData.id}</p>
-          <p>Lokacija: {userData.location}</p>
-          <p>Bio: {userData.bio}</p>
+          {userData.avatar_url ? <div>Slika:<img src={userData.avatar_url} alt='Slika profila'/></div> : ''}
+          <h1>{ime} {userData.login}</h1>
+          <p>{id} {userData.id}</p>
+          {loc}
+          {bio}
           <ol>
             {listItems}
           </ol>
