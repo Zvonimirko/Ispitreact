@@ -30,11 +30,19 @@ class App extends React.Component {
 
     fetch(`https://api.github.com/users/${this.state.user}/repos`)
     .then(response => response.json())
-    .then(data => 
-      this.setState({
-      repos: data
-    })
+    .then(data => {
+      if(data.length > 0) {
+        this.setState({
+          repos: data
+        })
+      } else {
+        alert('Pretraživanje nije uspjelo!')
+      }
+    }
+
+      
     )
+
   }
 
   handleReset = (event) => {
