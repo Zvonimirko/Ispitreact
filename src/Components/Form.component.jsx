@@ -5,16 +5,24 @@ import Input from './Input.component'
 import Reset from './Reset.component'
 
 function Form(props) {
+  if (props.repos.length > 0 ) {
   return(
     <div>
       <form onSubmit={props.handleSubmit}>
-        <Input input={props.input} user={props.user} handleInput={props.handleInput}/>
-        <UserInfo userInfo={props.userInfo}/>
-        <List repos={props.repos}/>
+        <UserInfo userInfo={props.userInfo} display={props.display}/>
+        <List repos={props.repos} display={props.display}/>
       </form>
       <Reset handleReset={props.handleReset}/>
     </div>
   )
+}
+return(
+  <div>
+    <form onSubmit={props.handleSubmit}>
+    <Input input={props.input} user={props.user} handleInput={props.handleInput}/>
+    </form>
+  </div>
+)
 }
 
 export default Form

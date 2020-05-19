@@ -20,6 +20,7 @@ class App extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+
     fetch(`https://api.github.com/users/${this.state.user}`)
     .then(response => response.json())
     .then(data => 
@@ -49,7 +50,7 @@ class App extends React.Component {
 
   render() {
     const { userData, repos, user } = this.state
-    
+     
     return(
       <div className='App'>
           <Form 
@@ -60,10 +61,9 @@ class App extends React.Component {
           repos={repos}
           user={user}
           />
-          
       </div>
     )
-  }
+  } 
 }
 
 export default App;
