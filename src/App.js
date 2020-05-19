@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import Form from './Components/Form.component'
 
-
 class App extends React.Component {
   constructor() {
     super()
@@ -46,7 +45,6 @@ class App extends React.Component {
       repos: []
     })
   }
-
 
   render() {
     const { userData, repos, user } = this.state
