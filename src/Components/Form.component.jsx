@@ -5,7 +5,7 @@ import Input from './Input.component'
 import Reset from './Reset.component'
 
 function Form(props) {
-  if (props.repos.length > 0 ) {
+  if (typeof props.userInfo.login === 'string') {
   return(
     <div>
       <form onSubmit={props.handleSubmit}>
