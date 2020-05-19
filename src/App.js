@@ -22,26 +22,24 @@ class App extends React.Component {
 
     fetch(`https://api.github.com/users/${this.state.user}`)
     .then(response => response.json())
-    .then(data => 
-      this.setState({
-      userData: data
-    })
-    )
+    .then((data) => {
+            if(data.message === 'Not Found') {
+              alert(data.message)
+            } else {
+              this.setState({
+                userData: data
+              })
+            }
+          } 
+        )
 
     fetch(`https://api.github.com/users/${this.state.user}/repos`)
     .then(response => response.json())
-    .then(data => {
-      if(data.length > 0) {
-        this.setState({
+    .then(data => 
+          this.setState({
           repos: data
         })
-      } else {
-        alert('Pretraživanje nije uspjelo!')
-      }
-    }
-
-      
-    )
+      )
 
   }
 
